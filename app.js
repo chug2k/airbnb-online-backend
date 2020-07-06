@@ -7,7 +7,7 @@ var indexRouter = require("./routes/index");
 var experiencesRouter = require("./routes/experiences");
 
 var app = express();
-mongoose.connect("mongodb://localhost/airbnb-2");
+mongoose.connect("mongodb://localhost/airbnb-3");
 
 app.use(logger("dev"));
 app.use(express.json());

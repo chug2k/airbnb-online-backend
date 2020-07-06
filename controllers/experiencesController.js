@@ -1,7 +1,10 @@
 const Experience = require("../models/experience");
 
 const getAllExperiences = async (req, res) => {
-  const experiences = await Experience.find();
+  const page = req.query.page || 1;
+  const skipNum = (page - 1) * 25;
+
+  const experiences = await Experience.find().limit(25).skip(skipNum);
   res.send(experiences);
 };
 
