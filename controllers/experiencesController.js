@@ -1,7 +1,11 @@
 const Experience = require("../models/experience");
 
 const getAllExperiences = async (req, res) => {
-  const experiences = await Experience.find();
+  const minPrice = req.query.minPrice;
+  const maxPrice = req.query.maxPrice;
+  const experiences = await Experience.find({
+    price: { $gte: minPrice, $lte: maxPrice },
+  }).sort({ price: 1 });
   res.send(experiences);
 };
 
